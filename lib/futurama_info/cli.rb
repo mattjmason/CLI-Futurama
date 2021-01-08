@@ -3,12 +3,13 @@ class Cli
  
    def start 
     logo
+    sleep(0.5)
     load_data
     print_main_menu
    end
 
    def logo
-    puts " 
+    puts <<-'ART'.cyan
 
     |.--------_--_------------_--__--.|
      ||    /\ |_)|_)|   /\ | |(_ |_   ||
@@ -28,10 +29,9 @@ class Cli
          `.| |  |           |  |,'
            `.|  |           |  |
              |  |           |  |
-        ".cyan
+        ART
     end
     def print_main_menu #Welcome Menu 
-        puts ""
         puts ""
         puts "Welcome to the World of Tomorrow (or just a Futurama CLI app)!".cyan
         puts ""
@@ -118,7 +118,7 @@ def character_details(character)
     puts "Species: #{character.info["species"]}" #solve for characters that don't have info hash
     puts "Occupation: #{character.homePlanet}"
     puts "Gender: #{character.info["gender"]}" #make sure correct 
-    puts "Sayings:" 
+    puts "Quotes:" 
         character.sayings.each_with_index do |s, i|
             iplusone = i + 1 
         puts "#{iplusone}. #{s} "
@@ -133,6 +133,7 @@ end
         puts ""
         puts "Thanks for trying out the Planet Express Ship!".cyan
         puts "Hopefully it's the best thing that you ever saw!".cyan 
+        logo_2
         exit
     end
 
@@ -142,6 +143,13 @@ end
         character_loader = Api.character
     end
 
+def logo_2
 
+    puts "
+
+
+
+   ".cyan
+end
 
 end
