@@ -38,7 +38,7 @@ class Cli
         puts "Good News Everyone! You can grab a list of characters from the show, see a variety of quotes, or even learn more about your favorite characters!"
         puts ""
         puts "To view all Futurama characters from the show, please type 'list characters'."
-        puts "To view quotes from Futurama characters, please type 'list quotes'."
+        puts "To view some fun quotes from Futurama characters, please type 'list quotes'."
         puts "To finish your session, please type 'exit'."
         user_main_menu_choice
     end
@@ -87,12 +87,13 @@ class Cli
 def more_info
     
     deeper_prompt #prompt that encourages deeper use 
+    puts ""
     id = valid_id?(deeper_choice)#confirm that id is valid #select a character by their id
     character = Character.find_by_id(id)#find character in the array of characters so that I can find through their ID 
-    character_details(character, id)  #give details about character
+    character_details(character, id)
+    puts ""  #give details about character
     put_continue #continue or exit?
     continue?(deeper_choice)
-    #start over  
     print_main_menu
     user_main_menu_choice
 end
@@ -102,6 +103,7 @@ def deeper_choice
 end
 
 def deeper_prompt
+    puts""
     puts "Choose a character by number to learn more!".cyan
 end
 
@@ -116,27 +118,27 @@ def character_details(character, id)
     id = id.to_i
     if id >= 8
     puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-    # puts "Age: #{character.age}" 
+    # puts "Age: #{character.info["age"]}" 
     puts "Species: #{character.info["species"]}" # if != character.info["Species"] #solve for characters that don't have info hash
     puts "Occupation: #{character.homePlanet}"
     puts "Gender: #{character.info["gender"]}" #make sure correct 
-    puts "Quotes:" 
-        character.sayings.each_with_index do |s, i|
-            iplusone = i + 1 
-        puts "#{iplusone}. #{s} "
-        end
+    # puts "Quotes:" 
+    #     character.sayings.each_with_index do |s, i|
+    #         iplusone = i + 1 
+    #     puts "#{iplusone}. #{s} "
+    #     end
     end
     if id < 8
         puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
         # puts "Age: #{character.age}" 
-        puts "Species: #{character.species}" # if != character.info["Species"] #solve for characters that don't have info hash
+        puts "Species: #{character.gender}" # if != character.info["Species"] #solve for characters that don't have info hash
         puts "Occupation: #{character.homePlanet}"
-        puts "Gender: #{character.gender}" #make sure correct 
-        puts "Quotes:" 
-            character.sayings.each_with_indexy do |s, i|
-                iplusone = i + 1 
-            puts "#{iplusone}. #{s} "
-            end
+        puts "Gender: #{character.occupation}" #make sure correct 
+        # puts "Quotes:" 
+        #     character.sayings.each.with_index do |s, i|
+        #         iplusone = i + 1 
+        #     puts "#{iplusone}. #{s} "
+        #     end
         end
 end
 
@@ -158,7 +160,9 @@ end
     end
 
 def print_error
+
     puts "That was not a good choice, try again meatbag.".red
+
 end
 
 def put_continue

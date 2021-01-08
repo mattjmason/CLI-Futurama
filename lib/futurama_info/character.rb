@@ -5,12 +5,13 @@ class Character
 
     def initialize(name, occupation, gender, species, homePlanet, info, sayings)
         @name = name
+        # @age = age
         @occupation = occupation
         @sayings = sayings
-        @species = species 
+        @species = species
         @gender = gender
-        @homePlanet = homePlanet
         @info = info
+        @homePlanet = homePlanet
         @@all << self
     end 
     def self.all
