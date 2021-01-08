@@ -5,7 +5,6 @@ class Character
 
     def initialize(name, occupation, gender, species, homePlanet, info, sayings)
         @name = name
-        # @age = age
         @occupation = occupation
         @sayings = sayings
         @species = species

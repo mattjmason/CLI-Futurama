@@ -1,10 +1,11 @@
 
 class Cli
  
-   def start 
-    logo
-    sleep(0.5)
+   def start
     load_data
+    sleep(1.0)
+    logo 
+    sleep(1.5)
     print_main_menu
    end
 
@@ -45,7 +46,7 @@ class Cli
 
    def user_main_menu_choice #where the user is going to make their choice
 
-    input = gets.chomp 
+    input = gets.chomp.strip 
 
      if input.downcase == "list quotes"
         list_quotes
@@ -65,6 +66,7 @@ class Cli
    def list_quotes 
         Quote.all.each.with_index(1) do |q,i| 
         puts "#{i}. #{q.quote} - #{q.name}"
+        sleep (0.5)
         end
     end
 
@@ -92,14 +94,14 @@ def more_info
     character = Character.find_by_id(id)#find character in the array of characters so that I can find through their ID 
     character_details(character, id)
     puts ""  #give details about character
-    put_continue #continue or exit?
+    put_continue 
     continue?(deeper_choice)
     print_main_menu
     user_main_menu_choice
 end
 
 def deeper_choice
-    gets.chomp
+    gets.chomp.strip
 end
 
 def deeper_prompt
@@ -110,7 +112,7 @@ end
 def valid_id?(id)
     id = id.to_i
     if id <1 || id > Character.all.size
-        exit #build in error later 
+        exit 
     end
     id
 end
@@ -118,34 +120,45 @@ def character_details(character, id)
     id = id.to_i
     if id >= 8
     puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-    # puts "Age: #{character.info["age"]}" 
     puts "Species: #{character.info["species"]}" # if != character.info["Species"] #solve for characters that don't have info hash
     puts "Occupation: #{character.homePlanet}"
     puts "Gender: #{character.info["gender"]}" #make sure correct 
-    # puts "Quotes:" 
-    #     character.sayings.each_with_index do |s, i|
-    #         iplusone = i + 1 
-    #     puts "#{iplusone}. #{s} "
-    #     end
+    puts ""
+    sleep(0.5)
+    puts "Here Come Some Quotes..."
+    puts ""
+        sleep(1.75)
+    puts "Quotes:" 
+        character.sayings.each_with_index do |s, i|
+            iplusone = i + 1 
+        puts "#{iplusone}. #{s} "
+        sleep (0.25)
+        end
     end
     if id < 8
         puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-        # puts "Age: #{character.age}" 
         puts "Species: #{character.gender}" # if != character.info["Species"] #solve for characters that don't have info hash
         puts "Occupation: #{character.homePlanet}"
         puts "Gender: #{character.occupation}" #make sure correct 
-        # puts "Quotes:" 
-        #     character.sayings.each.with_index do |s, i|
-        #         iplusone = i + 1 
-        #     puts "#{iplusone}. #{s} "
-        #     end
+        puts ""
+        sleep(0.5)
+        puts "Here Come Some Quotes..."
+        puts ""
+        sleep(1.75)
+        puts "Quotes:" 
+            character.sayings.each.with_index do |s, i|
+                iplusone = i + 1 
+            puts "#{iplusone}. #{s} "
+            sleep (0.25)
+            end
         end
 end
 
     def exit_cli
         puts ""
-        puts "Thanks for trying out the Planet Express Ship!".cyan
-        puts "Hopefully it's the best thing that you ever saw!".cyan 
+        puts "Goodbye Everybody!".cyan
+        puts "Thank you for choosing Planet Express!".cyan 
+        puts ""
         exit
     end
 
@@ -173,9 +186,13 @@ def continue?(pick)
     if pick == "y" 
         system("clear")
         print_main_menu
-    else 
+    elsif pick == "n"
         exit_cli
         exit
+    else 
+        print_error
+        put_continue
+        continue?(deeper_choice)
     end
     
 end
