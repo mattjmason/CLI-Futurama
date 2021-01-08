@@ -88,7 +88,7 @@ def more_info
     deeper_prompt #prompt that encourages deeper use 
     id = valid_id?(deeper_choice)#confirm that id is valid #select a character by their id
     character = Character.find_by_id(id)#find character in the array of characters so that I can find through their ID 
-    character_details(character)  #give details about character
+    character_details(character, id)  #give details about character
     #continue or exit?
 
     #start over  
@@ -111,11 +111,12 @@ def valid_id?(id)
     end
     id
 end
-def character_details(character)
-  
+def character_details(character, id)
+    id = id.to_i
+    if id >= 8
     puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
     # puts "Age: #{character.age}" 
-    puts "Species: #{character.info["species"]}" #solve for characters that don't have info hash
+    puts "Species: #{character.info["species"]}" # if != character.info["Species"] #solve for characters that don't have info hash
     puts "Occupation: #{character.homePlanet}"
     puts "Gender: #{character.info["gender"]}" #make sure correct 
     puts "Quotes:" 
@@ -123,7 +124,19 @@ def character_details(character)
             iplusone = i + 1 
         puts "#{iplusone}. #{s} "
         end
-
+    end
+    if id < 8
+        puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
+        # puts "Age: #{character.age}" 
+        puts "Species: #{character.species}" # if != character.info["Species"] #solve for characters that don't have info hash
+        puts "Occupation: #{character.homePlanet}"
+        puts "Gender: #{character.gender}" #make sure correct 
+        puts "Quotes:" 
+            character.sayings.each_with_index do |s, i|
+                iplusone = i + 1 
+            puts "#{iplusone}. #{s} "
+            end
+        end
 end
 
 
