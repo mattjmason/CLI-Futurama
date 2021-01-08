@@ -10,7 +10,7 @@ def self.character
     response = Net::HTTP.get_response(uri)
      data = JSON.parse(response.body)
      data.each do |c| 
-        Character.new(c["name"], c["gender"], c["species"], c["homePlanet"], c["occupation"], c["info"])
+        Character.new(c["name"], c["gender"], c["species"], c["homePlanet"], c["occupation"], c["info"], c["sayings"])
      end
 end
 

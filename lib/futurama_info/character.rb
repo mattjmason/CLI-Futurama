@@ -1,11 +1,12 @@
 class Character
-    attr_accessor :name, :occupation, :gender, :species, :homePlanet, :info
+    attr_accessor :name, :occupation, :gender, :species, :homePlanet, :info, :sayings
 
     @@all = []
 
-    def initialize(name, occupation, gender, species, homePlanet, info)
+    def initialize(name, occupation, gender, species, homePlanet, info, sayings)
         @name = name
         @occupation = occupation
+        @sayings = sayings
         @species = species 
         @gender = gender
         @homePlanet = homePlanet

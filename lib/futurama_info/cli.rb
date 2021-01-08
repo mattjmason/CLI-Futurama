@@ -91,10 +91,15 @@ end
 def character_details(character)
   
     puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-    puts "Home Planet: #{character.species}" #why aren't these working as intended?
-    puts "Species: #{character.gender}" #how to grab species (or gender) from info hash, key info, value gender, home, species
+    # puts "Age: #{character.age}" 
+    puts "Species: #{character.info["species"]}" #solve for characters that don't have info hash
     puts "Occupation: #{character.homePlanet}"
-    puts "Gender: #{character.occupation}" 
+    puts "Gender: #{character.info["gender"]}" #make sure correct 
+    puts "Sayings:" 
+        character.sayings.each_with_index do |s, i|
+            iplusone = i + 1 
+        puts "#{iplusone}. #{s} "
+        end
 
 end
     def exit_cli
