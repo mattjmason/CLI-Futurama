@@ -65,7 +65,6 @@ def more_info
     id = valid_id?(deeper_choice)#confirm that id is valid #select a character by their id
     character = Character.find_by_id(id)#find character in the array of characters so that I can find through their ID 
     character_details(character)  #give details about character
-
     #continue or exit?
 
     #start over  
@@ -102,6 +101,10 @@ def character_details(character)
         end
 
 end
+
+
+
+
     def exit_cli
         puts ""
         puts "Thanks for trying out the Planet Express Ship!".cyan
