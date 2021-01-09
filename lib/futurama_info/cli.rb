@@ -112,9 +112,14 @@ end
 def valid_id?(id)
     id = id.to_i
     if id <1 || id > Character.all.size
-        exit 
+        print_error2
+        more_info
     end
     id
+end
+
+def print_error2
+    puts "You broke our spaceship. Please try again!".red
 end
 
 # TIME TO REFACTOR
