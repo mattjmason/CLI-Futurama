@@ -116,6 +116,8 @@ def valid_id?(id)
     end
     id
 end
+
+# TIME TO REFACTOR
 def character_details(character, id)
     id = id.to_i
     if id >= 8
