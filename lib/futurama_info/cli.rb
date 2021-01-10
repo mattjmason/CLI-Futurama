@@ -62,17 +62,24 @@ class Cli
         print_main_menu
         end
     end
-        
+
+    def sorted_quotes
+        Quote.all.sort_by {|q| q.name}
+    end
    def list_quotes 
-        Quote.all.each.with_index(1) do |q,i| 
+        sorted_quotes.each.with_index(1) do |q,i| 
         puts "#{i}. #{q.quote} - #{q.name}"
-        sleep (0.5)
+        sleep (0.25)
         end
     end
 
+    def sorted_characters
+        Character.all.sort_by {|c| c.name["last"]}
+    end
+    
     def list_characters
         puts "List of Characters"
-        Character.all.each.with_index(1) do |c, i|
+        sorted_characters.each.with_index(1) do |c, i|
             first, middle, last = c.name["first"], c.name["middle"], c.name["last"]
             ans = "#{i}. "
             if first != ""
@@ -83,6 +90,7 @@ class Cli
             end
             ans += last
             puts ans 
+            sleep (0.15)
         end
     end
 
@@ -136,7 +144,7 @@ def character_details(character, id)
             character.sayings.each.with_index do |s, i|
                 iplusone = i + 1 
             puts "#{iplusone}. #{s} "
-            sleep (0.25)
+            sleep (0.15)
             end
        
 end

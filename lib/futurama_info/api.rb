@@ -5,7 +5,6 @@ class Api
 URL = "https://api.sampleapis.com/futurama/characters"
 URL2 = "https://futuramaquoteapi.herokuapp.com/allquotes"
 
-# PREP TO REFACTOR
 def self.character 
     uri = URI.parse(URL)
     response = Net::HTTP.get_response(uri)
