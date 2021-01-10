@@ -122,31 +122,11 @@ def print_error2
     puts "You broke our spaceship. Please try again!".red
 end
 
-# TIME TO REFACTOR
 def character_details(character, id)
-    id = id.to_i
-    if id >= 8
-    puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-    puts "Species: #{character.info["species"]}" # if != character.info["Species"] #solve for characters that don't have info hash
-    puts "Occupation: #{character.homePlanet}"
-    puts "Gender: #{character.info["gender"]}" #make sure correct 
-    puts ""
-    sleep(0.5)
-    puts "Here Come Some Quotes..."
-    puts ""
-        sleep(1.75)
-    puts "Quotes:" 
-        character.sayings.each_with_index do |s, i|
-            iplusone = i + 1 
-        puts "#{iplusone}. #{s} "
-        sleep (0.25)
-        end
-    end
-    if id < 8
         puts "Name: #{character.name["first"]} #{character.name["middle"]} #{character.name["last"]}"
-        puts "Species: #{character.gender}" # if != character.info["Species"] #solve for characters that don't have info hash
-        puts "Occupation: #{character.homePlanet}"
-        puts "Gender: #{character.occupation}" #make sure correct 
+        puts "Species: #{character.gender}" 
+        puts "Gender: #{character.occupation}" 
+        puts "Occupation: #{character.homePlanet}" 
         puts ""
         sleep(0.5)
         puts "Here Come Some Quotes..."
@@ -158,7 +138,7 @@ def character_details(character, id)
             puts "#{iplusone}. #{s} "
             sleep (0.25)
             end
-        end
+       
 end
 
     def exit_cli

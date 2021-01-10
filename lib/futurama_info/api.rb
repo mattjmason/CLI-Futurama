@@ -11,7 +11,15 @@ def self.character
     response = Net::HTTP.get_response(uri)
      data = JSON.parse(response.body)
      data.each do |c| 
-        Character.new(c["name"], c["gender"], c["species"], c["homePlanet"], c["occupation"], c["info"], c["sayings"])
+        gender = c["gender"]
+        species = c["species"]
+        homePlanet = c["homePlanet"]
+        if info = c["info"]
+            gender = info["gender"]
+            species = info["species"]
+            homePlanet = info["homePlanet"]
+        end
+        Character.new(c["name"], gender, species, homePlanet, c["occupation"], c["info"], c["sayings"])
      end
 end
 
