@@ -73,13 +73,11 @@ class Cli
         end
     end
 
-    def sorted_characters
-        Character.all.sort_by {|c| c.name["last"]}
-    end
-    
+
+
     def list_characters
         puts "List of Characters"
-        sorted_characters.each.with_index(1) do |c, i|
+      Character.all.each.with_index(1) do |c, i|
             first, middle, last = c.name["first"], c.name["middle"], c.name["last"]
             ans = "#{i}. "
             if first != ""
