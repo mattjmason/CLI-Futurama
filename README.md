@@ -4,7 +4,7 @@ Welcome to the Infosphere!
 
 You'll find info about characters and quotes from Futurama. This program will grab information from two different Futurama APIs, one contains character information and the other includes quotes. 
 
-As a user you will be able to see an alphabetically sorted list of characters, and also a list of quotes sorted alphabetically by character. You will then be able to see more information about that character, and receive a list of their most popular sayings. If you happen to make an incorrect choice, the program will give an incorrect response and prompt you to make a correct choice (though it may also make fun you).
+As a user you will be able to see a list of characters, and also a list of quotes sorted alphabetically by character. You will then be able to see more information about that character, and receive a list of their most popular sayings. If you happen to make an incorrect choice, the program will give an incorrect response and prompt you to make a correct choice (though it may also make fun you).
 
 
 ## Installation
